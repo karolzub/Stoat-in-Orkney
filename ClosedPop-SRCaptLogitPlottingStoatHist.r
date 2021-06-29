@@ -1,4 +1,4 @@
-### Stoat and rat data - Removal population & trappability estimates for South Ronaldsay
+### Stoat and rat data - Removal population & trappability estimates
 ### Plotting the posterior estimate of the stoat abundance
 set.seed(2012)
 
@@ -18,19 +18,19 @@ library(beepr)
 
 ########## Load the data
 
-rem.data<-read.table("d:/CONTAIN/Stoats RSPB/Removal-SR.csv", sep=",", header=TRUE)
+rem.data<-read.table("C:/Orkney/Model/Removal.csv", sep=";", header=TRUE)
 
-rem.data$Days<-round(rem.data$Mean_days, digits=0)
+#rem.data$Days<-round(rem.data$Mean_days, digits=0)
 
 rem.data
 
 #### Effective trapping effort for stoats after accounting for captured rats and closed traps
-eff.stoat<-(rem.data$Total.traps-rem.data$rat-rem.data$closed.trap)*rem.data$Days		 
+eff.stoat<-(rem.data$Effort-rem.data$rat-rem.data$closed.trap)		 
 
 eff.stoat
 
 #### Effective trapping effort for rat after accounting for captured stoats and closed traps
-eff.rat<-(rem.data$Total.traps-rem.data$stoat-rem.data$closed.trap)*rem.data$Days		 
+eff.rat<-(rem.data$Effort-rem.data$stoat-rem.data$closed.trap)		 
 
 eff.rat
 
@@ -160,7 +160,7 @@ beep(sound=8)
 out.post<-do.call(rbind.data.frame, rem.m2)
 
 hist(c(unlist(out.post)), ylab="Frequency", xlab="Estimated stoat population size", 
-				main="Prior ~uniform(1, 3000)", xlim=c(0, 3000))
+				main="Prior ~uniform(1, 3000)", xlim=c(0, 300))
 
 abline(v=sum(rem.data$stoat), lwd=5)
 
@@ -173,3 +173,4 @@ sd(c(unlist(out.post)))
 
 ### 95% Credible Intervals
 quantile(c(unlist(out.post)), c(0.0275, 0.975))
+
