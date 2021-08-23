@@ -6,7 +6,7 @@ set.seed(200)
 library(compiler)
 
 #### This is just calling the simulation function.
-source("C:/Orkney/Model/Model_SR_dispersal.R")
+source("C:/Orkney/Model/Model _SR_dispersal.R")
 
 ############# SIMULATIONS
 ### Define the study area (same across simulations)
