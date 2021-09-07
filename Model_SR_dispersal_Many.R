@@ -6,7 +6,7 @@ set.seed(200)
 library(compiler)
 
 #### This is just calling the simulation function.
-source("C:/Orkney/Model/Model_SR_dispersal.R")
+source("C:/Orkney/Frontiers/Model_SR_dispersal.R")
 
 ############# SIMULATIONS
 ### Define the study area (same across simulations)
@@ -23,7 +23,7 @@ resistanceSR <- resistanceFromShape("C:/Orkney/Model/SR_habitats.shp", res = 10,
 
 
 ############# NUMERICAL SIMULATIONS
-n.sim<-1000  ### Number of simulations
+n.sim<-100  ### Number of simulations
 
 ### Latin hypercube desing to explore a wide variety & good coverage of values
 library(lhs)
